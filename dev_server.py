@@ -29,7 +29,7 @@ class Handler(SimpleHTTPRequestHandler):
                 "state", "reset", "play", "pause", "speed", "tick", "step",
                 "breakdown", "restore", "weather", "traffic", "absence",
                 "delay", "reefer", "release", "negotiate", "approve",
-                "reject", "ask", "container", "inspect_vessel", "inspect_crane",
+                "reject", "ask", "container", "overview", "audit", "impact", "inspect_vessel", "inspect_crane",
                 "inspect_berth", "inspect_truck", "report",
             }:
                 raise ValueError("Unknown operation")

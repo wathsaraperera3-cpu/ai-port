@@ -1,0 +1,22 @@
+
+test_api_has_mutation_guards (test_contract.Contracts.test_api_has_mutation_guards) ... ok
+test_fixture_not_embedded_in_ratio_metric (test_contract.Contracts.test_fixture_not_embedded_in_ratio_metric) ... ok
+test_frontend_clear_offline_state (test_contract.Contracts.test_frontend_clear_offline_state) ... ok
+test_frontend_uses_jac_api (test_contract.Contracts.test_frontend_uses_jac_api) ... ok
+test_no_competing_backend (test_contract.Contracts.test_no_competing_backend) ... ok
+test_berth_seed_and_cargo_capacity (test_package.PackageTests.test_berth_seed_and_cargo_capacity) ... ok
+test_geographic_map_and_weather (test_package.PackageTests.test_geographic_map_and_weather) ... ok
+test_ids_unique_and_references_valid (test_package.PackageTests.test_ids_unique_and_references_valid) ... ok
+test_jac_source_ratio_excluding_seed (test_package.PackageTests.test_jac_source_ratio_excluding_seed) ... ok
+test_jac_walkers_and_api (test_package.PackageTests.test_jac_walkers_and_api) ... ok
+test_javascript_syntax (test_package.PackageTests.test_javascript_syntax) ... ok
+test_nine_specialist_agents (test_package.PackageTests.test_nine_specialist_agents) ... ok
+test_no_javascript_let_in_jac (test_package.PackageTests.test_no_javascript_let_in_jac)
+Jac 0.16 local declarations should not use JavaScript-style let. ... ok
+test_shift_coverage (test_package.PackageTests.test_shift_coverage) ... ok
+test_synthetic_dataset_size (test_package.PackageTests.test_synthetic_dataset_size) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.051s
+
+OK

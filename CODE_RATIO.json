@@ -1,0 +1,7 @@
+{
+  "basis": "author-written runtime source bytes; excludes large synthetic jac/seed.jac",
+  "jac_bytes_excluding_fixture": 100218,
+  "nonjac_runtime_bytes": 18435,
+  "jac_percent": 84.46,
+  "jac_compiler_verified": false
+}

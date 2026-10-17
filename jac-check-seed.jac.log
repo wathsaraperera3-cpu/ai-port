@@ -1,0 +1,16 @@
+﻿  Checking jac\seed.jac...
+jac\seed.jac PASSED [100%]
+
+=================================== FAILURES ===================================
+_________________________________ jac\seed.jac _________________________________
+[WARNING] warning[W1036]: Generic type "dict" used without type arguments, defaulting to "dict[any]"; consider adding explicit type arguments
+  --> jac\seed.jac:4:21
+    2 | # Not a live Sri Lanka Ports Authority terminal database or AIS data.
+    3 | 
+    4 | def make_world() -> dict {
+      |                     ^^^^
+    5 |     return {'minute': 540,
+    6 |      'day': 0,
+  ? run 'jac guide jac-types' for guidance
+
+============================== 1 passed in 2.20s ===============================

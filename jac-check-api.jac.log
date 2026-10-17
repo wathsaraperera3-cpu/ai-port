@@ -1,0 +1,672 @@
+﻿  Checking jac\api.jac...
+jac\api.jac FAILED [100%]
+
+=================================== FAILURES ===================================
+_________________________________ jac\api.jac __________________________________
+[ERROR] Error: error[E1001]: Cannot assign <Unknown> to dict
+  --> jac\api.jac:52:13
+   50 |             result={"ok":True,"world":world,"stats":stats(world),"mode":"SYNTHETIC_JAC"};
+   51 |         } elif self.action == "reset" {
+   52 |             world=reset_world();
+      |             ^^^^^^^^^^^^^^^^^^^^
+   53 |             result={"ok":True,"world":world,"stats":stats(world)};
+   54 |         } elif self.action == "play" {
+  ? run 'jac guide jac-types' for guidance
+[ERROR] Error: error[E1001]: Cannot assign <any> to int
+  --> jac\api.jac:67:17
+   65 |             if world["running"] {
+   66 |                 amount: int=5 if world["speed"]==5 else 1;
+   67 |                 before: int=world["version"];
+      |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   68 |                 tick(world,amount);
+   69 |                 execute_scheduled_assignments(world);
+  ? run 'jac guide jac-types' for guidance
+[ERROR] Error: error[E1001]: Cannot assign <any> to int
+  --> jac\api.jac:76:13
+   74 |             result={"ok":True,"world":world,"stats":stats(world)};
+   75 |         } elif self.action == "step" {
+   76 |             before: int=world["version"];
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   77 |             tick(world,1);
+   78 |             execute_scheduled_assignments(world);
+  ? run 'jac guide jac-types' for guidance
+[ERROR] Error: error[E1001]: Cannot assign <Unknown> to dict
+  --> jac\api.jac:85:13
+   83 |         } elif self.action == "breakdown" {
+   84 |             id: str=str(self.payload.get("crane","C2"));
+   85 |             world=breakdown_crane(world,id,int(self.payload.get("duration",180)));
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   86 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   87 |         } elif self.action == "restore" {
+  ? run 'jac guide jac-types' for guidance
+[ERROR] Error: error[E1001]: Cannot assign <Unknown> to dict
+  --> jac\api.jac:89:13
+   87 |         } elif self.action == "restore" {
+   88 |             id: str=str(self.payload.get("crane","C2"));
+   89 |             world=restore_crane(world,id);
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   90 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   91 |         } elif self.action == "weather" {
+  ? run 'jac guide jac-types' for guidance
+[ERROR] Error: error[E1001]: Cannot assign <Unknown> to dict
+  --> jac\api.jac:92:13
+   90 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   91 |         } elif self.action == "weather" {
+   92 |             world=change_weather(world,str(self.payload.get("mode","CLEAR")));
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   93 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   94 |         } elif self.action == "traffic" {
+[ERROR] Error: error[E1001]: Cannot assign <Unknown> to dict
+  --> jac\api.jac:95:13
+   93 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   94 |         } elif self.action == "traffic" {
+   95 |             world=change_traffic(world,str(self.payload.get("mode","NORMAL")));
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   96 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   97 |         } elif self.action == "absence" {
+  ? run 'jac guide jac-types' for guidance
+  ? run 'jac guide jac-types' for guidance
+[ERROR] Error: error[E1001]: Cannot assign <Unknown> to dict
+  --> jac\api.jac:98:13
+   96 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   97 |         } elif self.action == "absence" {
+   98 |             world=mark_worker_absent(world,str(self.payload.get("worker","W02")));
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   99 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  100 |         } elif self.action == "delay" {
+  ? run 'jac guide jac-types' for guidance
+[ERROR] Error: error[E1001]: Cannot assign <Unknown> to dict
+  --> jac\api.jac:101:13
+   99 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  100 |         } elif self.action == "delay" {
+  101 |             world=delay_vessel(world,str(self.payload.get("vessel","V03")),
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  102 |                 int(self.payload.get("minutes",30)));
+  103 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  ? run 'jac guide jac-types' for guidance
+[ERROR] Error: error[E1053]: Cannot assign <any> to parameter 'x' of type str | <Unknown> | SupportsFloat | SupportsIndex
+  --> jac\api.jac:106:23
+  104 |         } elif self.action == "reefer" {
+  105 |             world=change_reefer(world,str(self.payload.get("container","")),
+  106 |                 float(self.payload.get("temperature",15.0)));
+      |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  107 |             result={"ok":True,"world":world};
+  108 |         } elif self.action == "release" {
+  ? run 'jac guide jac-types' for guidance
+[ERROR] Error: error[E1001]: Cannot assign <Unknown> to dict
+  --> jac\api.jac:105:13
+  103 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  104 |         } elif self.action == "reefer" {
+  105 |             world=change_reefer(world,str(self.payload.get("container","")),
+      |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ? run 'jac guide jac-types' for guidance
+  106 |                 float(self.payload.get("temperature",15.0)));
+  107 |             result={"ok":True,"world":world};
+[ERROR] Error: error[E1001]: Cannot assign <Unknown> to dict
+  --> jac\api.jac:113:17
+  111 |                 result={"ok":False,"error":"Manager role required"};
+  112 |             } else {
+  113 |                 world=update_release(world,str(self.payload.get("container","")),
+      |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  114 |                     bool(self.payload.get("released",True)));
+  115 |                 result={"ok":True,"world":world};
+  ? run 'jac guide jac-types' for guidance
+[ERROR] Error: error[E1053]: Cannot assign <any> to parameter 'minute' of type int
+  --> jac\api.jac:147:36
+  145 |         } elif self.action == "report" {
+  146 |             result={"ok":True,"report":{"scenario":"FICTIONAL_COLOMBO",
+  147 |                 "time":clock_label(world["minute"]),"stats":stats(world),
+      |                                    ^^^^^^^^^^^^^^^
+  148 |                 "proposed_plan":world["proposed_plan"],"approved_plan":world["approved_plan"],
+  149 |                 "events":world["events"],"agents":world["agents"]}};
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W0061]: Parenthesized filter syntax '(?:...)' is deprecated. Use bracket syntax '[?:...]' instead.
+  --> jac\api.jac:23:34
+   21 | walker PortMindInitialize {
+   22 |     can ensure_world with `root entry {
+   23 |         stores: list = [here --> (?WorldStore)];
+      |                                  ^
+   24 |         if len(stores)==0 {
+   25 |             here ++> WorldStore(snapshot=make_world());
+help: Replace (?:Type, cond) with [?:Type, cond]
+  ? run 'jac guide jac-sv-persistence' for guidance
+[WARNING] warning[W0061]: Parenthesized filter syntax '(?:...)' is deprecated. Use bracket syntax '[?:...]' instead.
+  --> jac\api.jac:39:34
+   37 | 
+   38 |     can route_from_root with `root entry {
+   39 |         stores: list = [here --> (?WorldStore)];
+      |                                  ^
+   40 |         if len(stores)==0 {
+   41 |             here ++> WorldStore(snapshot=make_world());
+help: Replace (?:Type, cond) with [?:Type, cond]
+  ? run 'jac guide jac-sv-persistence' for guidance
+[WARNING] warning[W0061]: Parenthesized filter syntax '(?:...)' is deprecated. Use bracket syntax '[?:...]' instead.
+  --> jac\api.jac:43:25
+   41 |             here ++> WorldStore(snapshot=make_world());
+   42 |         }
+   43 |         visit [here --> (?WorldStore)];
+      |                         ^
+   44 |     }
+   45 | 
+help: Replace (?:Type, cond) with [?:Type, cond]
+  ? run 'jac guide jac-sv-persistence' for guidance
+[WARNING] warning[W1101]: Cannot import name 'tick' from module 'engine'
+  --> jac\api.jac:7:22
+    5 | 
+    6 | import from seed { make_world }
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+      |                      ^^^^
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+[WARNING] warning[W1101]: Cannot import name 'reset_world' from module 'engine'
+  --> jac\api.jac:7:28
+    5 | 
+    6 | import from seed { make_world }
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+      |                            ^^^^^^^^^^^
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+[WARNING] warning[W1101]: Cannot import name 'tick_once' from module 'engine'
+  --> jac\api.jac:7:41
+    5 | 
+    6 | import from seed { make_world }
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+      |                                         ^^^^^^^^^
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+[WARNING] warning[W1101]: Cannot import name 'breakdown_crane' from module 'engine'
+  --> jac\api.jac:8:5
+    6 | import from seed { make_world }
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+      |     ^^^^^^^^^^^^^^^
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+   10 |     container_trace, find_vessel, find_crane, find_truck, find_berth,
+[WARNING] warning[W1101]: Cannot import name 'restore_crane' from module 'engine'
+  --> jac\api.jac:8:22
+    6 | import from seed { make_world }
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+      |                      ^^^^^^^^^^^^^
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+   10 |     container_trace, find_vessel, find_crane, find_truck, find_berth,
+[WARNING] warning[W1101]: Cannot import name 'change_weather' from module 'engine'
+  --> jac\api.jac:8:37
+    6 | import from seed { make_world }
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+      |                                     ^^^^^^^^^^^^^^
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+   10 |     container_trace, find_vessel, find_crane, find_truck, find_berth,
+[WARNING] warning[W1101]: Cannot import name 'change_traffic' from module 'engine'
+  --> jac\api.jac:8:53
+    6 | import from seed { make_world }
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+      |                                                     ^^^^^^^^^^^^^^
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+   10 |     container_trace, find_vessel, find_crane, find_truck, find_berth,
+[WARNING] warning[W1101]: Cannot import name 'mark_worker_absent' from module 'engine'
+  --> jac\api.jac:9:5
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+      |     ^^^^^^^^^^^^^^^^^^
+   10 |     container_trace, find_vessel, find_crane, find_truck, find_berth,
+   11 |     available_trucks, publish_event }
+[WARNING] warning[W1101]: Cannot import name 'delay_vessel' from module 'engine'
+  --> jac\api.jac:9:25
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+      |                         ^^^^^^^^^^^^
+   10 |     container_trace, find_vessel, find_crane, find_truck, find_berth,
+   11 |     available_trucks, publish_event }
+[WARNING] warning[W1101]: Cannot import name 'change_reefer' from module 'engine'
+  --> jac\api.jac:9:39
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+      |                                       ^^^^^^^^^^^^^
+   10 |     container_trace, find_vessel, find_crane, find_truck, find_berth,
+   11 |     available_trucks, publish_event }
+[WARNING] warning[W1101]: Cannot import name 'update_release' from module 'engine'
+  --> jac\api.jac:9:54
+    7 | import from engine { tick, reset_world, tick_once, stats, clock_label,
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+      |                                                      ^^^^^^^^^^^^^^
+   10 |     container_trace, find_vessel, find_crane, find_truck, find_berth,
+   11 |     available_trucks, publish_event }
+[WARNING] warning[W1101]: Cannot import name 'container_trace' from module 'engine'
+  --> jac\api.jac:10:5
+    8 |     breakdown_crane, restore_crane, change_weather, change_traffic,
+    9 |     mark_worker_absent, delay_vessel, change_reefer, update_release,
+   10 |     container_trace, find_vessel, find_crane, find_truck, find_berth,
+      |     ^^^^^^^^^^^^^^^
+   11 |     available_trucks, publish_event }
+   12 | import from agents { negotiate, approve, ask_portmind,
+[WARNING] warning[W1036]: Generic type "dict" used without type arguments, defaulting to "dict[any]"; consider adding explicit type arguments
+  --> jac\api.jac:16:19
+   14 | 
+   15 | node WorldStore {
+   16 |     has snapshot: dict;
+      |                   ^^^^
+   17 |     has scenario_code: str = "COLOMBO_DEMO";
+   18 |     has migrated_version: int = 1;
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:22:27
+   20 | 
+   21 | walker PortMindInitialize {
+   22 |     can ensure_world with `root entry {
+      |                           ^^^^^
+   23 |         stores: list = [here --> (?WorldStore)];
+   24 |         if len(stores)==0 {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:23:25
+   21 | walker PortMindInitialize {
+   22 |     can ensure_world with `root entry {
+   23 |         stores: list = [here --> (?WorldStore)];
+      |                         ^^^^
+   24 |         if len(stores)==0 {
+   25 |             here ++> WorldStore(snapshot=make_world());
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:23:34
+   21 | walker PortMindInitialize {
+   22 |     can ensure_world with `root entry {
+   23 |         stores: list = [here --> (?WorldStore)];
+      |                                  ^^^^^^^^^^^^^
+   24 |         if len(stores)==0 {
+   25 |             here ++> WorldStore(snapshot=make_world());
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+[WARNING] warning[W1036]: Generic type "list" used without type arguments, defaulting to "list[any]"; consider adding explicit type arguments
+  --> jac\api.jac:23:17
+   21 | walker PortMindInitialize {
+   22 |     can ensure_world with `root entry {
+   23 |         stores: list = [here --> (?WorldStore)];
+      |                 ^^^^
+   24 |         if len(stores)==0 {
+   25 |             here ++> WorldStore(snapshot=make_world());
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:25:13
+   23 |         stores: list = [here --> (?WorldStore)];
+   24 |         if len(stores)==0 {
+   25 |             here ++> WorldStore(snapshot=make_world());
+      |             ^^^^
+   26 |         }
+   27 |         report {"ok":True,"initialized":True,"mode":"SYNTHETIC_JAC"};
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1036]: Generic type "dict" used without type arguments, defaulting to "dict[any]"; consider adding explicit type arguments
+  --> jac\api.jac:35:18
+   33 | walker PortMindAPI {
+   34 |     has action: str = "state";
+   35 |     has payload: dict = {};
+      |                  ^^^^
+   36 |     has actor_role: str = "OBSERVER";
+   37 | 
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:38:30
+   36 |     has actor_role: str = "OBSERVER";
+   37 | 
+   38 |     can route_from_root with `root entry {
+      |                              ^^^^^
+   39 |         stores: list = [here --> (?WorldStore)];
+   40 |         if len(stores)==0 {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:39:25
+   37 | 
+   38 |     can route_from_root with `root entry {
+   39 |         stores: list = [here --> (?WorldStore)];
+      |                         ^^^^
+   40 |         if len(stores)==0 {
+   41 |             here ++> WorldStore(snapshot=make_world());
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:39:34
+   37 | 
+   38 |     can route_from_root with `root entry {
+   39 |         stores: list = [here --> (?WorldStore)];
+      |                                  ^^^^^^^^^^^^^
+   40 |         if len(stores)==0 {
+   41 |             here ++> WorldStore(snapshot=make_world());
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1036]: Generic type "list" used without type arguments, defaulting to "list[any]"; consider adding explicit type arguments
+  --> jac\api.jac:39:17
+   37 | 
+   38 |     can route_from_root with `root entry {
+   39 |         stores: list = [here --> (?WorldStore)];
+      |                 ^^^^
+   40 |         if len(stores)==0 {
+   41 |             here ++> WorldStore(snapshot=make_world());
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:41:13
+   39 |         stores: list = [here --> (?WorldStore)];
+   40 |         if len(stores)==0 {
+   41 |             here ++> WorldStore(snapshot=make_world());
+      |             ^^^^
+   42 |         }
+   43 |         visit [here --> (?WorldStore)];
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:43:16
+   41 |             here ++> WorldStore(snapshot=make_world());
+   42 |         }
+   43 |         visit [here --> (?WorldStore)];
+      |                ^^^^
+   44 |     }
+   45 | 
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:43:25
+   41 |             here ++> WorldStore(snapshot=make_world());
+   42 |         }
+   43 |         visit [here --> (?WorldStore)];
+      |                         ^^^^^^^^^^^^^
+   44 |     }
+   45 | 
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1036]: Generic type "dict" used without type arguments, defaulting to "dict[any]"; consider adding explicit type arguments
+  --> jac\api.jac:47:16
+   45 | 
+   46 |     can execute_command with WorldStore entry {
+   47 |         world: dict=here.snapshot;
+      |                ^^^^
+   48 |         result: dict={"ok":True};
+   49 |         if self.action == "state" {
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1036]: Generic type "dict" used without type arguments, defaulting to "dict[any]"; consider adding explicit type arguments
+  --> jac\api.jac:48:17
+   46 |     can execute_command with WorldStore entry {
+   47 |         world: dict=here.snapshot;
+   48 |         result: dict={"ok":True};
+      |                 ^^^^
+   49 |         if self.action == "state" {
+   50 |             result={"ok":True,"world":world,"stats":stats(world),"mode":"SYNTHETIC_JAC"};
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:52:19
+   50 |             result={"ok":True,"world":world,"stats":stats(world),"mode":"SYNTHETIC_JAC"};
+   51 |         } elif self.action == "reset" {
+   52 |             world=reset_world();
+      |                   ^^^^^^^^^^^
+   53 |             result={"ok":True,"world":world,"stats":stats(world)};
+   54 |         } elif self.action == "play" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:52:19
+   50 |             result={"ok":True,"world":world,"stats":stats(world),"mode":"SYNTHETIC_JAC"};
+   51 |         } elif self.action == "reset" {
+   52 |             world=reset_world();
+      |                   ^^^^^^^^^^^^^
+   53 |             result={"ok":True,"world":world,"stats":stats(world)};
+   54 |         } elif self.action == "play" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:68:17
+   66 |                 amount: int=5 if world["speed"]==5 else 1;
+   67 |                 before: int=world["version"];
+   68 |                 tick(world,amount);
+      |                 ^^^^
+   69 |                 execute_scheduled_assignments(world);
+   70 |                 if before!=world["version"] and world["last_plan_version"]!=world["version"] {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:68:17
+   66 |                 amount: int=5 if world["speed"]==5 else 1;
+   67 |                 before: int=world["version"];
+   68 |                 tick(world,amount);
+      |                 ^^^^^^^^^^^^^^^^^^
+   69 |                 execute_scheduled_assignments(world);
+   70 |                 if before!=world["version"] and world["last_plan_version"]!=world["version"] {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:77:13
+   75 |         } elif self.action == "step" {
+   76 |             before: int=world["version"];
+   77 |             tick(world,1);
+      |             ^^^^
+   78 |             execute_scheduled_assignments(world);
+   79 |             if before!=world["version"] and world["last_plan_version"]!=world["version"] {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:77:13
+   75 |         } elif self.action == "step" {
+   76 |             before: int=world["version"];
+   77 |             tick(world,1);
+      |             ^^^^^^^^^^^^^
+   78 |             execute_scheduled_assignments(world);
+   79 |             if before!=world["version"] and world["last_plan_version"]!=world["version"] {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:85:19
+   83 |         } elif self.action == "breakdown" {
+   84 |             id: str=str(self.payload.get("crane","C2"));
+   85 |             world=breakdown_crane(world,id,int(self.payload.get("duration",180)));
+      |                   ^^^^^^^^^^^^^^^
+   86 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   87 |         } elif self.action == "restore" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:85:19
+   83 |         } elif self.action == "breakdown" {
+   84 |             id: str=str(self.payload.get("crane","C2"));
+   85 |             world=breakdown_crane(world,id,int(self.payload.get("duration",180)));
+      |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   86 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   87 |         } elif self.action == "restore" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:89:19
+   87 |         } elif self.action == "restore" {
+   88 |             id: str=str(self.payload.get("crane","C2"));
+   89 |             world=restore_crane(world,id);
+      |                   ^^^^^^^^^^^^^
+   90 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   91 |         } elif self.action == "weather" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:89:19
+   87 |         } elif self.action == "restore" {
+   88 |             id: str=str(self.payload.get("crane","C2"));
+   89 |             world=restore_crane(world,id);
+      |                   ^^^^^^^^^^^^^^^^^^^^^^^
+   90 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   91 |         } elif self.action == "weather" {
+  ? run 'jac guide jac-types' for guidance
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:92:19
+   90 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   91 |         } elif self.action == "weather" {
+   92 |             world=change_weather(world,str(self.payload.get("mode","CLEAR")));
+      |                   ^^^^^^^^^^^^^^
+   93 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   94 |         } elif self.action == "traffic" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:92:19
+   90 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   91 |         } elif self.action == "weather" {
+   92 |             world=change_weather(world,str(self.payload.get("mode","CLEAR")));
+      |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   93 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   94 |         } elif self.action == "traffic" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:95:19
+   93 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   94 |         } elif self.action == "traffic" {
+   95 |             world=change_traffic(world,str(self.payload.get("mode","NORMAL")));
+      |                   ^^^^^^^^^^^^^^
+   96 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   97 |         } elif self.action == "absence" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:95:19
+   93 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   94 |         } elif self.action == "traffic" {
+   95 |             world=change_traffic(world,str(self.payload.get("mode","NORMAL")));
+      |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   96 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   97 |         } elif self.action == "absence" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:98:19
+   96 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   97 |         } elif self.action == "absence" {
+   98 |             world=mark_worker_absent(world,str(self.payload.get("worker","W02")));
+      |                   ^^^^^^^^^^^^^^^^^^
+   99 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  100 |         } elif self.action == "delay" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:98:19
+   96 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+   97 |         } elif self.action == "absence" {
+   98 |             world=mark_worker_absent(world,str(self.payload.get("worker","W02")));
+      |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   99 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  100 |         } elif self.action == "delay" {
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:101:19
+   99 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  100 |         } elif self.action == "delay" {
+  101 |             world=delay_vessel(world,str(self.payload.get("vessel","V03")),
+      |                   ^^^^^^^^^^^^
+  102 |                 int(self.payload.get("minutes",30)));
+  103 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  ? run 'jac guide jac-types' for guidance
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:101:19
+   99 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  100 |         } elif self.action == "delay" {
+  101 |             world=delay_vessel(world,str(self.payload.get("vessel","V03")),
+      |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  102 |                 int(self.payload.get("minutes",30)));
+  103 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:105:19
+  103 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  104 |         } elif self.action == "reefer" {
+  105 |             world=change_reefer(world,str(self.payload.get("container","")),
+      |                   ^^^^^^^^^^^^^
+  106 |                 float(self.payload.get("temperature",15.0)));
+  107 |             result={"ok":True,"world":world};
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:105:19
+  103 |             result={"ok":True,"proposal":negotiate(world),"world":world};
+  104 |         } elif self.action == "reefer" {
+  105 |             world=change_reefer(world,str(self.payload.get("container","")),
+      |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  106 |                 float(self.payload.get("temperature",15.0)));
+  107 |             result={"ok":True,"world":world};
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:113:23
+  111 |                 result={"ok":False,"error":"Manager role required"};
+  112 |             } else {
+  113 |                 world=update_release(world,str(self.payload.get("container","")),
+      |                       ^^^^^^^^^^^^^^
+  114 |                     bool(self.payload.get("released",True)));
+  115 |                 result={"ok":True,"world":world};
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:113:23
+  111 |                 result={"ok":False,"error":"Manager role required"};
+  112 |             } else {
+  113 |                 world=update_release(world,str(self.payload.get("container","")),
+      |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  114 |                     bool(self.payload.get("released",True)));
+  115 |                 result={"ok":True,"world":world};
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:128:17
+  126 |                 result={"ok":False,"error":"No proposed plan"};
+  127 |             } else {
+  128 |                 world["proposed_plan"]["status"]="REJECTED";
+      |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  129 |                 publish_event(world,"PLAN_REJECTED","Manager rejected suggested plan","WARNING");
+  130 |                 world["proposed_plan"]=None;
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:136:39
+  134 |             result={"ok":True,"reply":ask_portmind(world,str(self.payload.get("question","")))};
+  135 |         } elif self.action == "container" {
+  136 |             result={"ok":True,"trace":container_trace(world,str(self.payload.get("code","")))};
+      |                                       ^^^^^^^^^^^^^^^
+  137 |         } elif self.action == "inspect_vessel" {
+  138 |             result={"ok":True,"item":find_vessel(world,str(self.payload.get("code","")))};
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W1051]: Expression type could not be resolved (Unknown)
+  --> jac\api.jac:136:39
+  134 |             result={"ok":True,"reply":ask_portmind(world,str(self.payload.get("question","")))};
+  135 |         } elif self.action == "container" {
+  136 |             result={"ok":True,"trace":container_trace(world,str(self.payload.get("code","")))};
+      |                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  137 |         } elif self.action == "inspect_vessel" {
+  138 |             result={"ok":True,"item":find_vessel(world,str(self.payload.get("code","")))};
+help: Often fixed by adding a more specific type annotation to the relevant declaration (e.g., 'list[Task]' instead of bare 'list', or annotating an unannotated parameter or attribute). Can also indicate an unresolved import, a forward reference the checker cannot bind, or fallout from an upstream error.
+  ? run 'jac guide jac-types' for guidance
+[WARNING] warning[W2001]: Name 'root' may be undefined
+  --> jac\api.jac:22:27
+   20 | 
+   21 | walker PortMindInitialize {
+   22 |     can ensure_world with `root entry {
+      |                           ^^^^^
+   23 |         stores: list = [here --> (?WorldStore)];
+   24 |         if len(stores)==0 {
+[WARNING] warning[W2001]: Name 'root' may be undefined
+  --> jac\api.jac:38:30
+   36 |     has actor_role: str = "OBSERVER";
+   37 | 
+   38 |     can route_from_root with `root entry {
+      |                              ^^^^^
+   39 |         stores: list = [here --> (?WorldStore)];
+   40 |         if len(stores)==0 {
+
+================================= failed files =================================
+jac\api.jac - 13 errors, 58 warnings
+============================== 1 failed in 1.94s ===============================

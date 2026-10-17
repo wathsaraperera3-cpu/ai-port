@@ -1,0 +1,16 @@
+﻿  Checking jac\model.jac...
+jac\model.jac PASSED [100%]
+
+=================================== FAILURES ===================================
+________________________________ jac\model.jac _________________________________
+[WARNING] warning[W1036]: Generic type "dict" used without type arguments, defaulting to "dict[any]"; consider adding explicit type arguments
+  --> jac\model.jac:209:19
+  207 |     has decision: str;
+  208 |     has reason: str;
+  209 |     has evidence: dict;
+      |                   ^^^^
+  210 |     has candidate_code: str = "";
+  211 |     has round_index: int = 1;
+  ? run 'jac guide jac-types' for guidance
+
+============================== 1 passed in 0.91s ===============================

@@ -1,12 +1,16 @@
-# PortMind AI Colombo — Jac-first Smart Port Digital Twin
+# PortMind AI Colombo — Jac-first Smart Port Digital Twin (syntax repair candidate)
 
 A **Jac/Jaseci-first GitHub-ready source package** for a fictional Colombo-inspired port control tower. The app includes a real OpenStreetMap **geographic basemap** with **simulated** vessel positions, synthetic container/berth/crane/truck/worker events, nine rule-based operational specialists, incident recovery proposals requiring manager review, and a separately labeled live **Open-Meteo Colombo-area weather forecast**.
 
 > **Status / crucial limitation:** The Jac compiler/runtime (`jaclang` / Jac Cloud) was **not available in the authoring environment**. Accordingly, this is a substantive Jac migration **source package**, **not a certified working Jac deployment**. The frontend syntax, fixture references and ratio checks were executed; Jac compilation, backend walker endpoint compatibility, and full browser-to-Jac integration **remain unverified**. Do not submit as a functional Jac hackathon deliverable before testing on a real Jac/Jaseci installation and fixing any version incompatibilities.
 
+> **Update (Jac 0.16.7 syntax repair):** The original package generated 194 errors / 76 warnings on the user's Jac compiler. We removed 155 JavaScript-style `let` declarations and added `check-jac-windows.ps1`. **This is not yet compiler-certified:** run the PowerShell checks on Jac 0.16.7 and address remaining diagnostics. See `JAC_0167_FIXES.md`.
+
 ## Source-code percentage — read carefully
 
 This source uses Jac for all intended business logic, the simulation engine, constraint checker, 9 agents, seed records and backend walker service. The browser UI is thin JavaScript/HTML/CSS; `dev_server.py` is a local HTTP forwarding helper, **not** a Python simulation engine.
+
+**Warning:** excluding the large synthetic `jac/seed.jac` fixture, the Jac share of executable application source is approximately 70.5% by bytes, not 90%. Do not represent a fixture-inflated total as satisfying the competition rule.
 
 **Jac percentage calculation, authored application files only:** bytes in `jac/*.jac` divided by bytes in `jac/*.jac`, `web/*.js`, `web/*.html`, `web/*.css`, and `dev_server.py`. Tests, documentation, CI metadata, generated caches, binaries and vendors are excluded. This **includes 360 synthetic container records** inside `jac/seed.jac`; therefore it is not a measure of *algorithm-only* code. Please don't claim that the 90% byte share proves runtime Jac compliance or that a jury will use this measurement method.
 
@@ -119,3 +123,11 @@ The GitHub Actions workflow includes static checks on push; it also offers a man
 5. Record a truthful hackathon demo only after you have a successful Jac-backed end-to-end run.
 
 This software is a synthetic teaching/hackathon example, **not an operating system for real Colombo Port navigation, crane control, customs, workers, weather safety or container dispatch**.
+
+### Windows compiler diagnostic script
+
+```powershell
+.\check-jac-windows.ps1
+```
+
+Run in project root. Creates `jac-check-*.log` output files for each Jac source.
